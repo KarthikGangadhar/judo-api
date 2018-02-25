@@ -3,6 +3,24 @@
 const Joi = require('joi');
 const Handlers = require('../lib/handlers.js');
 
+const objectSchema = Joi.object({
+    year: Joi.string(),
+    type: Joi.string(),
+    city: Joi.string(),
+    event: Joi.string(),
+    category: Joi.string()
+});
+
+const athleteSchema = {
+    id: Joi.string().required(),
+    name: Joi.string().required(),
+    country: Joi.string(),
+    birth: Joi.string(),
+    image: Joi.string(),
+    cover: Joi.string(),
+    link: Joi.string(),
+    medals: Joi.array().items(objectSchema).unique()
+};
 
 const resultHTTPStatus = {
     '200': {
@@ -48,22 +66,7 @@ module.exports = [{
                 }
             },
             validate: {
-                payload: {
-                    id: Joi.string().required(),
-                    name: Joi.string().required(),
-                    country: Joi.string(),
-                    birth: Joi.string(),
-                    image: Joi.string(),
-                    cover: Joi.string(),
-                    link: Joi.string(),
-                    medals: [{
-                        year: Joi.string(),
-                        type: Joi.string(),
-                        city: Joi.string(),
-                        event: Joi.string(),
-                        category: Joi.string()
-                    }]
-                }
+                payload: athleteSchema
             }
         }
     },
@@ -101,22 +104,7 @@ module.exports = [{
                 }
             },
             validate: {
-                payload: {
-                    id: Joi.string(),
-                    name: Joi.string(),
-                    country: Joi.string(),
-                    birth: Joi.string(),
-                    image: Joi.string(),
-                    cover: Joi.string(),
-                    link: Joi.string(),
-                    medals: [{
-                        year: Joi.string(),
-                        type: Joi.string(),
-                        city: Joi.string(),
-                        event: Joi.string(),
-                        category: Joi.string()
-                    }]
-                },
+                payload: athleteSchema,
                 query: {
                     id: Joi.string().required().description('Id: athlete Id')
                 }

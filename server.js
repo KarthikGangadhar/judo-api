@@ -19,8 +19,8 @@ server.connection({
 const swaggerOptions = {
     info: {
         version: Pack.version,
-        title: 'Profile API Documentation',
-        description: 'This is a REST API for developers profiles.'
+        title: 'Athletes API Documentation',
+        description: 'This is a REST API for athletes profiles.'
     },
     tags: [{
         'name': 'index',
