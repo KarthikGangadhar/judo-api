@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const config = require('../../config');
-const User = require('../models/cricketers');
+const Player = require('../models/cricketers');
 
 mongoose.connect(config.playerstat);
 
-const CreateUser = (request, reply) => {
-    var user = new User(request.payload);
+const CreatePlayer = (request, reply) => {
+    var user = new Player(request.payload);
 
     user.save((err) => {
         if (err) {
@@ -18,8 +18,8 @@ const CreateUser = (request, reply) => {
     });
 };
 
-const UpdateUser = (request, reply) => {
-    User.findByIdAndUpdate(request.query.id, request.payload, {
+const UpdatePlayer = (request, reply) => {
+    Player.findByIdAndUpdate(request.query.id, request.payload, {
         new: true
     }, (err, user) => {
         if (err) {
@@ -32,8 +32,8 @@ const UpdateUser = (request, reply) => {
     });
 };
 
-const DeleteUser = (request, reply) => {
-    User.remove(request.payload, (err, data) => {
+const DeletePlayer = (request, reply) => {
+    Player.remove(request.payload, (err, data) => {
         if (err) {
             reply({
                 err: err
@@ -46,8 +46,8 @@ const DeleteUser = (request, reply) => {
     });
 };
 
-const GetAllUsers = (request, reply) => {
-    User.find((err, users) => {
+const GetAllPlayers = (request, reply) => {
+    Player.find((err, users) => {
         if (err) {
             reply({
                 'err': err
@@ -58,13 +58,13 @@ const GetAllUsers = (request, reply) => {
     });
 };
 
-const GetOneUser = (request, reply) => {
+const GetOnePlayer = (request, reply) => {
     reply(request.user);
 };
 
-const GetByIdUser = (request, reply) => {
+const GetByIdPlayer = (request, reply) => {
     let id = request.query.id;
-    User.findOne({
+    Player.findOne({
         _id: id
     }, (err, user) => {
         if (err) {
@@ -78,10 +78,10 @@ const GetByIdUser = (request, reply) => {
 };
 
 module.exports = {
-    getAllUsers: GetAllUsers,
-    createUser: CreateUser,
-    updateUser: UpdateUser,
-    deleteUser: DeleteUser,
-    getOneUser: GetOneUser,
-    getByIdUser: GetByIdUser,
+    getAllPlayers: GetAllPlayers,
+    createPlayer: CreatePlayer,
+    updatePlayer: UpdatePlayer,
+    deletePlayer: DeletePlayer,
+    getOnePlayer: GetOnePlayer,
+    getByIdPlayer: GetByIdPlayer,
 }

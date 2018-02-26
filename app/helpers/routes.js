@@ -202,7 +202,7 @@ module.exports = [{
         method: 'GET',
         path: '/crickers',
         config: {
-            handler: crickerHandlers.getAllUsers,
+            handler: crickerHandlers.getAllPlayers,
             description: 'Get All Crickers',
             tags: ['api', 'reduced'],
             notes: ['Fetches all the existing crickers data from mongodb'],
@@ -217,7 +217,7 @@ module.exports = [{
         method: 'POST',
         path: '/crickers',
         config: {
-            handler: crickerHandlers.createUser,
+            handler: crickerHandlers.createPlayer,
             description: 'Create New crickers',
             tags: ['api', 'reduced'],
             notes: ['Create a new crickers and updates data'],
@@ -235,7 +235,7 @@ module.exports = [{
         method: 'GET',
         path: '/crickers/{crickerId}',
         config: {
-            handler: crickerHandlers.getByIdUser,
+            handler: crickerHandlers.getByIdPlayer,
             description: 'Get crickers By ID',
             tags: ['api', 'reduced'],
             notes: ['Fetches the existing crickers data by Id'],
@@ -255,7 +255,7 @@ module.exports = [{
         method: 'PUT',
         path: '/crickers/{crickerId}',
         config: {
-            handler: crickerHandlers.updateUser,
+            handler: crickerHandlers.updatePlayer,
             description: 'Update existing cricker Data',
             tags: ['api', 'reduced'],
             notes: ['Update a crickers data by Id'],
@@ -276,7 +276,7 @@ module.exports = [{
         method: 'DELETE',
         path: '/crickers/{crickerId}',
         config: {
-            handler: crickerHandlers.deleteUser,
+            handler: crickerHandlers.deletePlayer,
             description: 'Delete a cricker Data',
             tags: ['api', 'reduced'],
             notes: ['Update a crickers data by Id'],
